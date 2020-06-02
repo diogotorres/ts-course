@@ -4,11 +4,13 @@ class NegociacaoController {
   private inputQtde: HTMLInputElement;
   private inputValor: HTMLInputElement;
   private negociacoes: Negociacoes = new Negociacoes();
+  private negociacoesView: NegociacoesView = new NegociacoesView('#negociacoesView');
 
   constructor() {
     this.inputData = <HTMLInputElement>document.querySelector('#data');
     this.inputQtde = <HTMLInputElement>document.querySelector('#quantidade');
     this.inputValor = <HTMLInputElement>document.querySelector('#valor');
+    this.negociacoesView.update(this.negociacoes);
   }
 
   adiciona(event: Event) {
@@ -20,12 +22,7 @@ class NegociacaoController {
     );
 
     this.negociacoes.adiciona(negociacao);
-    
-    this.negociacoes.toArray().forEach(negociacao => {
-      console.log(negociacao.data);
-      console.log(negociacao.qtde);
-      console.log(negociacao.valor);
-    });
+    this.negociacoesView.update(this.negociacoes);
   }
 
 }
