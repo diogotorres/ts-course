@@ -5,6 +5,7 @@ class NegociacaoController {
   private inputValor: HTMLInputElement;
   private negociacoes: Negociacoes = new Negociacoes();
   private negociacoesView: NegociacoesView = new NegociacoesView('#negociacoesView');
+  private mensagemView: MensagemView = new MensagemView('#mensagemView');
 
   constructor() {
     this.inputData = <HTMLInputElement>document.querySelector('#data');
@@ -23,6 +24,7 @@ class NegociacaoController {
 
     this.negociacoes.adiciona(negociacao);
     this.negociacoesView.update(this.negociacoes);
+    this.mensagemView.update('Negociação adicionada com sucesso!')
   }
 
 }
